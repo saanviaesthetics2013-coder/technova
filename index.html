@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insane App Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PARTICLE BACKGROUND -->
+<canvas id="bg"></canvas>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ring"></div>
+  <p>Initializing Experience...</p>
+</div>
+
+<!-- LANDING -->
+<div id="landing">
+  <h1 class="logo">⚡ APP HUB</h1>
+  <h2 id="typing"></h2>
+  <button onclick="enter()">ENTER</button>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+
+  <nav class="nav">
+    <button onclick="route('games')">🎮</button>
+    <button onclick="route('notes')">📝</button>
+    <button onclick="route('news')">📰</button>
+    <button onclick="route('voice')">🎤</button>
+  </nav>
+
+  <div class="view">
+
+    <!-- GAMES -->
+    <section id="games" class="page">
+      <div class="glass">
+        <h2>Game Zone</h2>
+        <input id="guess">
+        <button onclick="guess()">Play</button>
+        <p id="g"></p>
+      </div>
+    </section>
+
+    <!-- NOTES -->
+    <section id="notes" class="page">
+      <div class="glass warm">
+        <input id="note" placeholder="Write...">
+        <button onclick="add()">Add</button>
+        <ul id="list"></ul>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="page">
+      <div class="glass dark">
+        <input id="area" placeholder="Location">
+        <button onclick="news()">Search</button>
+      </div>
+    </section>
+
+    <!-- VOICE -->
+    <section id="voice" class="page">
+      <div class="glass center">
+        <div class="pulse"></div>
+        <button onclick="speak()">🎙</button>
+        <p id="speech"></p>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
