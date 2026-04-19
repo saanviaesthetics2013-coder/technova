@@ -2,77 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Insane App Hub</title>
+<title>Atlas WebOS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PARTICLE BACKGROUND -->
-<canvas id="bg"></canvas>
-
-<!-- LOADER -->
+<!-- LOADING SCREEN -->
 <div id="loader">
-  <div class="ring"></div>
-  <p>Initializing Experience...</p>
+  <div class="logo">Atlas</div>
+  <div class="bar"></div>
 </div>
 
-<!-- LANDING -->
-<div id="landing">
-  <h1 class="logo">⚡ APP HUB</h1>
-  <h2 id="typing"></h2>
-  <button onclick="enter()">ENTER</button>
-</div>
+<!-- DESKTOP -->
+<div id="desktop" class="hidden">
 
-<!-- APP -->
-<div id="app" class="hidden">
+  <!-- NOTES WINDOW -->
+  <div class="window" id="notesWin">
+    <div class="titlebar" onmousedown="dragStart(event,'notesWin')">
+      <span>Notes</span>
+      <button onclick="closeWin('notesWin')">✕</button>
+    </div>
 
-  <nav class="nav">
-    <button onclick="route('games')">🎮</button>
-    <button onclick="route('notes')">📝</button>
-    <button onclick="route('news')">📰</button>
-    <button onclick="route('voice')">🎤</button>
-  </nav>
-
-  <div class="view">
-
-    <!-- GAMES -->
-    <section id="games" class="page">
-      <div class="glass">
-        <h2>Game Zone</h2>
-        <input id="guess">
-        <button onclick="guess()">Play</button>
-        <p id="g"></p>
-      </div>
-    </section>
-
-    <!-- NOTES -->
-    <section id="notes" class="page">
-      <div class="glass warm">
-        <input id="note" placeholder="Write...">
-        <button onclick="add()">Add</button>
-        <ul id="list"></ul>
-      </div>
-    </section>
-
-    <!-- NEWS -->
-    <section id="news" class="page">
-      <div class="glass dark">
-        <input id="area" placeholder="Location">
-        <button onclick="news()">Search</button>
-      </div>
-    </section>
-
-    <!-- VOICE -->
-    <section id="voice" class="page">
-      <div class="glass center">
-        <div class="pulse"></div>
-        <button onclick="speak()">🎙</button>
-        <p id="speech"></p>
-      </div>
-    </section>
-
+    <div class="content">
+      <input id="noteInput" placeholder="Write something...">
+      <button onclick="addNote()">Save</button>
+      <ul id="noteList"></ul>
+    </div>
   </div>
 
+  <!-- AI WINDOW -->
+  <div class="window hidden" id="aiWin">
+    <div class="titlebar" onmousedown="dragStart(event,'aiWin')">
+      <span>Atlas AI</span>
+      <button onclick="closeWin('aiWin')">✕</button>
+    </div>
+
+    <div class="content">
+      <input id="aiInput" placeholder="Ask anything...">
+      <button onclick="askAI()">Ask</button>
+      <p id="aiOut"></p>
+    </div>
+  </div>
+
+  <!-- GAME WINDOW -->
+  <div class="window hidden" id="gameWin">
+    <div class="titlebar" onmousedown="dragStart(event,'gameWin')">
+      <span>Mini Game</span>
+      <button onclick="closeWin('gameWin')">✕</button>
+    </div>
+
+    <div class="content">
+      <button onclick="game()">Start Game</button>
+      <p id="gameOut"></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- DOCK -->
+<div class="dock hidden" id="dock">
+  <button onclick="openWin('notesWin')">📝</button>
+  <button onclick="openWin('aiWin')">🧠</button>
+  <button onclick="openWin('gameWin')">🎮</button>
 </div>
 
 <script src="script.js"></script>
