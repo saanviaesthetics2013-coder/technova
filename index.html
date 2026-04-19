@@ -1,82 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Atlas Workspace</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>NEO HUB</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- TOP BAR -->
-<header class="topbar">
-  <div class="brand">Atlas</div>
-  <div class="tag">Workspace OS</div>
+<canvas id="bg"></canvas>
+
+<header>
+  <h1 class="glow">NEO HUB</h1>
+  <button onclick="toggleSound()">🎧</button>
 </header>
 
-<!-- HERO DASHBOARD -->
-<section class="hero">
+<div class="container">
 
-  <h1>Everything in one workspace.</h1>
-  <p>Notes, AI, tools, and games — organized like a modern SaaS product.</p>
+  <div class="card" onclick="openModule('calculator')">🧮</div>
+  <div class="card" onclick="openModule('game')">🎮</div>
+  <div class="card" onclick="openModule('voice')">🎤</div>
+  <div class="card" onclick="openModule('terminal')">💻</div>
+  <div class="card" onclick="openModule('ai')">🧠</div>
 
-</section>
-
-<!-- PRODUCT GRID -->
-<section class="grid">
-
-  <div class="card" onclick="openApp('notes')">
-    <h2>📝 Notes</h2>
-    <p>Save and manage your ideas instantly.</p>
-  </div>
-
-  <div class="card" onclick="openApp('ai')">
-    <h2>🧠 AI Assistant</h2>
-    <p>Ask questions and get smart responses.</p>
-  </div>
-
-  <div class="card" onclick="openApp('game')">
-    <h2>🎮 Mini Games</h2>
-    <p>Quick interactive games for fun.</p>
-  </div>
-
-</section>
-
-<!-- NOTES APP -->
-<div id="notes" class="app hidden">
-  <div class="appHeader">
-    <h2>Notes</h2>
-    <button onclick="closeApp('notes')">Close</button>
-  </div>
-
-  <input id="noteInput" placeholder="Write a note...">
-  <button onclick="addNote()">Save</button>
-  <ul id="noteList"></ul>
 </div>
 
-<!-- AI APP -->
-<div id="ai" class="app hidden">
-  <div class="appHeader">
-    <h2>AI Assistant</h2>
-    <button onclick="closeApp('ai')">Close</button>
-  </div>
+<div id="module-container"></div>
 
-  <input id="aiInput" placeholder="Ask something...">
-  <button onclick="askAI()">Ask</button>
-  <p id="aiOut"></p>
-</div>
-
-<!-- GAME APP -->
-<div id="game" class="app hidden">
-  <div class="appHeader">
-    <h2>Game</h2>
-    <button onclick="closeApp('game')">Close</button>
-  </div>
-
-  <button onclick="game()">Start Guess Game</button>
-  <p id="gameOut"></p>
-</div>
+<audio id="bg-sound" loop>
+  <source src="assets/sounds/ambient.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
+<script src="modules/calculator.js"></script>
+<script src="modules/game.js"></script>
+<script src="modules/voice.js"></script>
+<script src="modules/terminal.js"></script>
+<script src="modules/ai.js"></script>
+
 </body>
 </html>
