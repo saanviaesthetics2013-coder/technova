@@ -1,52 +1,66 @@
-
-// OPEN / CLOSE APPS
-function openApp(id){
-  document.getElementById(id).classList.remove("hidden");
+function openModule(name) {
+  const container = document.getElementById("module-container");
+  container.innerHTML = window[name]();
 }
 
-function closeApp(id){
-  document.getElementById(id).classList.add("hidden");
+/* 🌌 Particle + mouse effect */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 120; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    dx: (Math.random() - 0.5),
+    dy: (Math.random() - 0.5)
+  });
 }
 
-// NOTES
-function addNote(){
-  let v=document.getElementById("noteInput").value;
-  let data=JSON.parse(localStorage.getItem("notes")||"[]");
+let mouse = {x:0,y:0};
 
-  data.push(v);
-  localStorage.setItem("notes",JSON.stringify(data));
+window.addEventListener("mousemove", e => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
 
-  render();
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach(p => {
+    let dist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+
+    if (dist < 100) {
+      p.x += (p.x - mouse.x) * 0.02;
+      p.y += (p.y - mouse.y) * 0.02;
+    }
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    ctx.fillStyle = "cyan";
+    ctx.fillRect(p.x, p.y, 2, 2);
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* 🎧 sound */
+function toggleSound() {
+  let audio = document.getElementById("bg-sound");
+  if (audio.paused) audio.play();
+  else audio.pause();
 }
 
-function render(){
-  let data=JSON.parse(localStorage.getItem("notes")||"[]");
-
-  document.getElementById("noteList").innerHTML =
-    data.map(n=>`<li>${n}</li>`).join("");
-}
-render();
-
-// AI (SIMULATION)
-function askAI(){
-  let q=document.getElementById("aiInput").value;
-
-  let replies=[
-    "That’s a strong idea.",
-    "Focus on simplicity.",
-    "You are building something useful.",
-    "Keep iterating.",
-    "Looks promising."
-  ];
-
-  document.getElementById("aiOut").innerText =
-    replies[Math.floor(Math.random()*replies.length)];
-}
-
-// GAME
-function game(){
-  let n=Math.floor(Math.random()*10)+1;
-  let g=prompt("Guess 1-10");
-  document.getElementById("gameOut").innerText =
-    (g==n?"Win 🎉":"Try again ❌");
+/* 🌗 mood theme */
+let hour = new Date().getHours();
+if (hour > 6 && hour < 18) {
+  document.body.classList.add("day");
+} else {
+  document.body.classList.add("night");
 }
