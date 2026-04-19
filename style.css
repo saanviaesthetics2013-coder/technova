@@ -1,120 +1,57 @@
 body {
-  margin:0;
-  font-family: system-ui;
-  background:#f6f7fb;
-  color:#111;
-  font-size:18px; /* ⬅️ BIGGER BASE TEXT */
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: black;
+  color: white;
+  transition: background 1s;
 }
 
-/* TOP BAR */
-.topbar {
-  display:flex;
-  justify-content:space-between;
-  padding:30px 50px;
-  background:white;
-  border-bottom:1px solid #eee;
+/* Mood-based theme */
+body.day {
+  background: linear-gradient(to bottom, #1a2a6c, #b21f1f);
 }
 
-.brand {
-  font-size:28px; /* BIG */
-  font-weight:800;
+body.night {
+  background: black;
 }
 
-.tag {
-  font-size:18px;
-  color:#777;
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-/* HERO (FULL SCREEN FEEL) */
-.hero {
-  padding:80px 50px;
-  min-height:60vh; /* ⬅️ MAKES IT BIG */
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.hero h1 {
-  font-size:64px; /* ⬅️ MAIN BIG TITLE */
-  margin:0;
-  line-height:1.1;
+.glow {
+  color: cyan;
+  text-shadow: 0 0 20px cyan;
 }
 
-.hero p {
-  font-size:22px;
-  color:#555;
-  margin-top:20px;
-  max-width:700px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-/* GRID FULL WIDTH */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:30px;
-  padding:0 50px 80px;
-}
-
-/* BIG CARDS */
 .card {
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.06);
-  cursor:pointer;
-  transition:0.25s;
-  min-height:180px; /* ⬅️ BIG CARDS */
-}
-
-.card h2 {
-  font-size:28px;
-}
-
-.card p {
-  font-size:18px;
-  color:#666;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 30px;
+  transition: 0.4s;
 }
 
 .card:hover {
-  transform:translateY(-10px);
-}
-
-/* APP WINDOWS (BIGGER FULL SCREEN FEEL) */
-.app {
-  position:fixed;
-  top:5%;
-  left:50%;
-  transform:translateX(-50%);
-  width:80%; /* ⬅️ MUCH BIGGER */
-  height:80vh;
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 30px 80px rgba(0,0,0,0.2);
-}
-
-/* HEADERS */
-.appHeader h2 {
-  font-size:32px;
-}
-
-/* INPUTS BIGGER */
-input {
-  width:100%;
-  padding:16px;
-  font-size:18px;
-  margin-top:15px;
-  border:1px solid #ddd;
-  border-radius:12px;
-}
-
-button {
-  margin-top:15px;
-  padding:14px;
-  font-size:16px;
-  border:none;
-  border-radius:12px;
-  background:#111;
-  color:white;
-  cursor:pointer;
+  transform: rotateY(10deg) scale(1.1);
+  box-shadow: 0 0 40px cyan;
 }
