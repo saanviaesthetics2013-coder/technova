@@ -3,99 +3,117 @@ body {
   font-family: system-ui;
   background:#f6f7fb;
   color:#111;
+  font-size:18px; /* ⬅️ BIGGER BASE TEXT */
 }
 
 /* TOP BAR */
 .topbar {
   display:flex;
   justify-content:space-between;
-  padding:20px 30px;
+  padding:30px 50px;
   background:white;
   border-bottom:1px solid #eee;
 }
 
 .brand {
-  font-size:20px;
-  font-weight:700;
+  font-size:28px; /* BIG */
+  font-weight:800;
 }
 
 .tag {
-  color:#888;
+  font-size:18px;
+  color:#777;
 }
 
-/* HERO */
+/* HERO (FULL SCREEN FEEL) */
 .hero {
-  padding:40px;
+  padding:80px 50px;
+  min-height:60vh; /* ⬅️ MAKES IT BIG */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .hero h1 {
-  font-size:42px;
+  font-size:64px; /* ⬅️ MAIN BIG TITLE */
   margin:0;
+  line-height:1.1;
 }
 
 .hero p {
-  color:#666;
-  margin-top:10px;
+  font-size:22px;
+  color:#555;
+  margin-top:20px;
+  max-width:700px;
 }
 
-/* GRID */
+/* GRID FULL WIDTH */
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  padding:0 40px 40px;
+  gap:30px;
+  padding:0 50px 80px;
 }
 
+/* BIG CARDS */
 .card {
   background:white;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.06);
   cursor:pointer;
-  transition:0.2s;
+  transition:0.25s;
+  min-height:180px; /* ⬅️ BIG CARDS */
+}
+
+.card h2 {
+  font-size:28px;
+}
+
+.card p {
+  font-size:18px;
+  color:#666;
 }
 
 .card:hover {
-  transform:translateY(-6px);
+  transform:translateY(-10px);
 }
 
-/* APP WINDOWS */
+/* APP WINDOWS (BIGGER FULL SCREEN FEEL) */
 .app {
   position:fixed;
-  top:10%;
+  top:5%;
   left:50%;
   transform:translateX(-50%);
-  width:400px;
+  width:80%; /* ⬅️ MUCH BIGGER */
+  height:80vh;
   background:white;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.2);
 }
 
-.hidden {
-  display:none;
+/* HEADERS */
+.appHeader h2 {
+  font-size:32px;
 }
 
-.appHeader {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-/* INPUTS */
+/* INPUTS BIGGER */
 input {
   width:100%;
-  padding:10px;
-  margin-top:10px;
+  padding:16px;
+  font-size:18px;
+  margin-top:15px;
   border:1px solid #ddd;
-  border-radius:10px;
+  border-radius:12px;
 }
 
 button {
-  margin-top:10px;
-  padding:10px;
+  margin-top:15px;
+  padding:14px;
+  font-size:16px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   background:#111;
   color:white;
   cursor:pointer;
