@@ -1,128 +1,125 @@
 body {
   margin:0;
-  font-family:sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#f4f4f5;
   overflow:hidden;
-  color:white;
-}
-
-/* CANVAS */
-#bg {
-  position:fixed;
-  width:100%;
-  height:100%;
-  z-index:-1;
-  background:#050510;
 }
 
 /* LOADER */
 #loader {
   position:fixed;
-  width:100%;
-  height:100%;
+  inset:0;
+  background:#0b0c10;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  background:black;
-  z-index:1000;
-}
-
-.ring {
-  width:80px;
-  height:80px;
-  border:5px solid #222;
-  border-top:5px solid cyan;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
-
-/* LANDING */
-#landing {
-  position:fixed;
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background:transparent;
+  color:white;
 }
 
 .logo {
-  font-size:60px;
-  text-shadow:0 0 30px cyan;
+  font-size:40px;
+  font-weight:600;
+  letter-spacing:2px;
+  animation:fade 2s infinite alternate;
 }
 
-#landing button {
+.bar {
+  width:200px;
+  height:2px;
+  background:rgba(255,255,255,0.2);
   margin-top:20px;
-  padding:12px 30px;
+  overflow:hidden;
+}
+
+.bar::after {
+  content:"";
+  display:block;
+  width:40%;
+  height:100%;
+  background:white;
+  animation:load 1.5s infinite;
+}
+
+@keyframes load {
+  0% { transform:translateX(-100%); }
+  100% { transform:translateX(250%); }
+}
+
+/* DESKTOP */
+#desktop {
+  width:100%;
+  height:100vh;
+  background:linear-gradient(135deg,#e5e7eb,#fafafa);
+  position:relative;
+}
+
+/* WINDOW */
+.window {
+  width:340px;
+  position:absolute;
+  top:120px;
+  left:120px;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter: blur(30px);
+  border-radius:16px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.15);
+}
+
+.hidden { display:none; }
+
+.titlebar {
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  cursor:grab;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+/* CONTENT */
+.content {
+  padding:10px;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  margin-bottom:10px;
+}
+
+button {
+  padding:8px;
   border:none;
-  background:cyan;
-  border-radius:20px;
+  border-radius:10px;
+  background:#111;
+  color:white;
   cursor:pointer;
 }
 
-/* APP */
-.hidden {display:none;}
-
-.nav {
+/* DOCK */
+.dock {
   position:fixed;
   bottom:20px;
   left:50%;
   transform:translateX(-50%);
   display:flex;
-  gap:10px;
-}
-
-.nav button {
-  padding:15px;
-  border:none;
-  border-radius:50%;
-  background:#222;
-}
-
-/* VIEW */
-.view {
-  padding:50px;
-}
-
-.page {
-  display:none;
-  animation:fade 0.5s;
-}
-
-/* GLASS UI */
-.glass {
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,0.1);
-  padding:30px;
+  gap:12px;
+  padding:12px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter: blur(25px);
   border-radius:20px;
-  transition:0.3s;
 }
 
-.glass:hover {
-  transform:scale(1.03);
+.dock button {
+  font-size:22px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  transition:0.2s;
 }
 
-.warm {background:#f5deb3; color:black;}
-.dark {background:#222;}
-.center {text-align:center;}
-
-/* VOICE */
-.pulse {
-  width:100px;
-  height:100px;
-  border-radius:50%;
-  background:cyan;
-  animation:pulse 1s infinite;
-  margin:auto;
-}
-
-/* ANIMATIONS */
-@keyframes spin {to{transform:rotate(360deg);}}
-@keyframes fade {from{opacity:0;} to{opacity:1;}}
-@keyframes pulse {
-  0%{transform:scale(1);opacity:0.7;}
-  50%{transform:scale(1.3);opacity:0.3;}
-  100%{transform:scale(1);opacity:0.7;}
+.dock button:hover {
+  transform:translateY(-8px) scale(1.3);
 }
