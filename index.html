@@ -2,73 +2,81 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Atlas WebOS</title>
+<title>Atlas Workspace</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-  <div class="logo">Atlas WebOS</div>
-  <div class="bar"></div>
-</div>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="brand">Atlas</div>
+  <div class="tag">Workspace OS</div>
+</header>
 
-<!-- DESKTOP -->
-<div id="desktop" class="hidden">
+<!-- HERO DASHBOARD -->
+<section class="hero">
 
-  <!-- NOTES WINDOW -->
-  <div class="window" id="notesWin">
-    <div class="titlebar" onmousedown="dragStart(event,'notesWin')">
-      <span>Notes</span>
-      <button onclick="closeWin('notesWin')">✕</button>
-    </div>
+  <h1>Everything in one workspace.</h1>
+  <p>Notes, AI, tools, and games — organized like a modern SaaS product.</p>
 
-    <div class="content">
-      <input id="noteInput" placeholder="Write a note...">
-      <button onclick="addNote()">Save</button>
-      <ul id="noteList"></ul>
-    </div>
+</section>
+
+<!-- PRODUCT GRID -->
+<section class="grid">
+
+  <div class="card" onclick="openApp('notes')">
+    <h2>📝 Notes</h2>
+    <p>Save and manage your ideas instantly.</p>
   </div>
 
-  <!-- AI WINDOW -->
-  <div class="window hidden" id="aiWin">
-    <div class="titlebar" onmousedown="dragStart(event,'aiWin')">
-      <span>Atlas AI</span>
-      <button onclick="closeWin('aiWin')">✕</button>
-    </div>
-
-    <div class="content">
-      <input id="aiInput" placeholder="Ask something...">
-      <button onclick="askAI()">Ask</button>
-      <p id="aiOut"></p>
-    </div>
+  <div class="card" onclick="openApp('ai')">
+    <h2>🧠 AI Assistant</h2>
+    <p>Ask questions and get smart responses.</p>
   </div>
 
-  <!-- GAME WINDOW -->
-  <div class="window hidden" id="gameWin">
-    <div class="titlebar" onmousedown="dragStart(event,'gameWin')">
-      <span>Game</span>
-      <button onclick="closeWin('gameWin')">✕</button>
-    </div>
-
-    <div class="content">
-      <button onclick="game()">Start Game</button>
-      <p id="gameOut"></p>
-    </div>
+  <div class="card" onclick="openApp('game')">
+    <h2>🎮 Mini Games</h2>
+    <p>Quick interactive games for fun.</p>
   </div>
 
+</section>
+
+<!-- NOTES APP -->
+<div id="notes" class="app hidden">
+  <div class="appHeader">
+    <h2>Notes</h2>
+    <button onclick="closeApp('notes')">Close</button>
+  </div>
+
+  <input id="noteInput" placeholder="Write a note...">
+  <button onclick="addNote()">Save</button>
+  <ul id="noteList"></ul>
 </div>
 
-<!-- DOCK -->
-<div class="dock hidden" id="dock">
-  <button onclick="openWin('notesWin')">📝</button>
-  <button onclick="openWin('aiWin')">🧠</button>
-  <button onclick="openWin('gameWin')">🎮</button>
+<!-- AI APP -->
+<div id="ai" class="app hidden">
+  <div class="appHeader">
+    <h2>AI Assistant</h2>
+    <button onclick="closeApp('ai')">Close</button>
+  </div>
+
+  <input id="aiInput" placeholder="Ask something...">
+  <button onclick="askAI()">Ask</button>
+  <p id="aiOut"></p>
 </div>
 
-<!-- SCRIPT -->
+<!-- GAME APP -->
+<div id="game" class="app hidden">
+  <div class="appHeader">
+    <h2>Game</h2>
+    <button onclick="closeApp('game')">Close</button>
+  </div>
+
+  <button onclick="game()">Start Guess Game</button>
+  <p id="gameOut"></p>
+</div>
+
 <script src="script.js"></script>
-
 </body>
 </html>
