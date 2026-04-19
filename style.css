@@ -1,125 +1,102 @@
 body {
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-  background:#f4f4f5;
-  overflow:hidden;
+  font-family: system-ui;
+  background:#f6f7fb;
+  color:#111;
 }
 
-/* LOADER */
-#loader {
-  position:fixed;
-  inset:0;
-  background:#0b0c10;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:white;
-}
-
-.logo {
-  font-size:40px;
-  font-weight:600;
-  letter-spacing:2px;
-  animation:fade 2s infinite alternate;
-}
-
-.bar {
-  width:200px;
-  height:2px;
-  background:rgba(255,255,255,0.2);
-  margin-top:20px;
-  overflow:hidden;
-}
-
-.bar::after {
-  content:"";
-  display:block;
-  width:40%;
-  height:100%;
-  background:white;
-  animation:load 1.5s infinite;
-}
-
-@keyframes load {
-  0% { transform:translateX(-100%); }
-  100% { transform:translateX(250%); }
-}
-
-/* DESKTOP */
-#desktop {
-  width:100%;
-  height:100vh;
-  background:linear-gradient(135deg,#e5e7eb,#fafafa);
-  position:relative;
-}
-
-/* WINDOW */
-.window {
-  width:340px;
-  position:absolute;
-  top:120px;
-  left:120px;
-  background:rgba(255,255,255,0.7);
-  backdrop-filter: blur(30px);
-  border-radius:16px;
-  box-shadow:0 30px 60px rgba(0,0,0,0.15);
-}
-
-.hidden { display:none; }
-
-.titlebar {
+/* TOP BAR */
+.topbar {
   display:flex;
   justify-content:space-between;
-  padding:10px;
-  cursor:grab;
-  border-bottom:1px solid rgba(0,0,0,0.05);
+  padding:20px 30px;
+  background:white;
+  border-bottom:1px solid #eee;
 }
 
-/* CONTENT */
-.content {
-  padding:10px;
+.brand {
+  font-size:20px;
+  font-weight:700;
 }
 
+.tag {
+  color:#888;
+}
+
+/* HERO */
+.hero {
+  padding:40px;
+}
+
+.hero h1 {
+  font-size:42px;
+  margin:0;
+}
+
+.hero p {
+  color:#666;
+  margin-top:10px;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:0 40px 40px;
+}
+
+.card {
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.06);
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.card:hover {
+  transform:translateY(-6px);
+}
+
+/* APP WINDOWS */
+.app {
+  position:fixed;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  width:400px;
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.hidden {
+  display:none;
+}
+
+.appHeader {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* INPUTS */
 input {
   width:100%;
   padding:10px;
-  border-radius:10px;
+  margin-top:10px;
   border:1px solid #ddd;
-  margin-bottom:10px;
+  border-radius:10px;
 }
 
 button {
-  padding:8px;
+  margin-top:10px;
+  padding:10px;
   border:none;
   border-radius:10px;
   background:#111;
   color:white;
   cursor:pointer;
-}
-
-/* DOCK */
-.dock {
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:12px;
-  padding:12px;
-  background:rgba(255,255,255,0.6);
-  backdrop-filter: blur(25px);
-  border-radius:20px;
-}
-
-.dock button {
-  font-size:22px;
-  background:none;
-  border:none;
-  cursor:pointer;
-  transition:0.2s;
-}
-
-.dock button:hover {
-  transform:translateY(-8px) scale(1.3);
 }
