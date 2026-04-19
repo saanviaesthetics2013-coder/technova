@@ -5,11 +5,12 @@
 <title>Atlas WebOS</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <!-- LOADING SCREEN -->
 <div id="loader">
-  <div class="logo">Atlas</div>
+  <div class="logo">Atlas WebOS</div>
   <div class="bar"></div>
 </div>
 
@@ -24,7 +25,7 @@
     </div>
 
     <div class="content">
-      <input id="noteInput" placeholder="Write something...">
+      <input id="noteInput" placeholder="Write a note...">
       <button onclick="addNote()">Save</button>
       <ul id="noteList"></ul>
     </div>
@@ -38,7 +39,7 @@
     </div>
 
     <div class="content">
-      <input id="aiInput" placeholder="Ask anything...">
+      <input id="aiInput" placeholder="Ask something...">
       <button onclick="askAI()">Ask</button>
       <p id="aiOut"></p>
     </div>
@@ -47,7 +48,7 @@
   <!-- GAME WINDOW -->
   <div class="window hidden" id="gameWin">
     <div class="titlebar" onmousedown="dragStart(event,'gameWin')">
-      <span>Mini Game</span>
+      <span>Game</span>
       <button onclick="closeWin('gameWin')">✕</button>
     </div>
 
@@ -66,6 +67,8 @@
   <button onclick="openWin('gameWin')">🎮</button>
 </div>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>
